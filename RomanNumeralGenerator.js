@@ -1,33 +1,17 @@
-const NUMERALS = {
-  1000: 'M',
-  500: 'D',
-  100: 'C',
-  50: 'L',
-  10: 'X',
-  5: 'V',
-  1: 'I',
-};
-
 function toNumeral(part, one, five, ten) {
-  switch(true) {
+  switch (true) {
     case part === 0:
       return '';
-      break;
     case part <= 3:
       return one.repeat(part);
-      break;
     case part === 4:
       return `${one}${five}`;
-      break;
     case part === 5:
       return `${five}`;
-      break;
     case part < 9:
       return `${five}${one.repeat(part - 5)}`;
-      break;
     case part === 9:
       return `${one}${ten}`;
-      break;
     default:
       throw new Error(`Cannot convert ${part} to numeral`);
   }
