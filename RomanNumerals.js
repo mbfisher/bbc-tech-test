@@ -40,9 +40,6 @@ function generate(integer) {
   const hundreds = (integer - (tens + units)) % 1000;
   const thousands = integer - (hundreds + tens + units);
 
-  console.log(integer, units, tens, hundreds, thousands);
-
-
   let numeral = '';
 
   if (tens > 50) {
