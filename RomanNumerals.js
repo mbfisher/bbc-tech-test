@@ -1,20 +1,59 @@
 const NUMERALS = {
-  1: 'I',
-  2: 'II',
-  3: 'III',
-  4: 'IV',
-  5: 'V',
-  6: 'VI',
-  7: 'VII',
-  8: 'VIII',
-  9: 'IX',
+  1000: 'M',
+  500: 'D',
+  100: 'C',
+  50: 'L',
   10: 'X',
+  5: 'V',
+  1: 'I',
 };
 
-function generate(integer) {
-  if (integer <= 10) {
-    return NUMERALS[integer];
+function toNumeral(num, one, five, ten) {
+  if (num === 0) {
+    return '';
   }
+
+  if (num <= 3) {
+    return one.repeat(num);
+  }
+
+  if (num === 4) {
+    return `${one}${five}`;
+  }
+
+  if (num === 5) {
+    return `${five}`;
+  }
+
+  if (num < 9) {
+    return `${five}${one.repeat(num - 5)}`;
+  }
+
+  if (num === 9) {
+    return `${one}${ten}`;
+  }
+}
+
+function generate(integer) {
+  const units = integer % 10;
+  const tens = (integer - units) % 100;
+  const hundreds = (integer - (tens + units)) % 1000;
+  const thousands = integer - (hundreds + tens + units);
+
+  console.log(integer, units, tens, hundreds, thousands);
+
+
+  let numeral = '';
+
+  if (tens > 50) {
+    numeral += toNumeral(tens / 10, 'X', 'V', 'XX');
+  } else {
+    numeral += toNumeral(tens / 10, 'X', 'L', 'C');
+  }
+
+  numeral += toNumeral(units, 'I', 'V', 'X');
+
+  return numeral;
 }
 
 module.exports = { generate };
