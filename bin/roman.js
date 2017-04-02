@@ -12,9 +12,16 @@ Options:
   -h, --help    Show usage
 `;
 
-const integer = Number(process.argv[2]);
+const arg = process.argv[2];
 
-if (integer === undefined || isNaN(integer)) {
+if (arg === '--help') {
+  console.log(usage);
+  process.exit(0);
+}
+
+const integer = Number(arg);
+
+if (isNaN(integer)) {
   console.log(chalk.yellow(usage));
   process.exit(1);
 }
