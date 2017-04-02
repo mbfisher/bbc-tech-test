@@ -1,0 +1,19 @@
+{
+  "name": "bbc-roman-numerals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha RomanNumerals.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "nodejs": ">=7.8.0",
+    "chalk": "^1.1.3"
+  }
+}
